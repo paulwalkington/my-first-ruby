@@ -1,0 +1,29 @@
+<h1>All created url's</h1>
+
+<% if @bookmarks.size == 0%>
+	<em> No bookmarks found</em>
+<% else %>
+
+<table style="width: 100%">
+  <thead>
+    <tr>
+	  <th>User</th>
+      <th>Url</th>
+    </tr>
+  </thead>
+ 
+  <tbody>
+    <% @bookmarks.each do |bookmark| %>
+      <tr>
+	    <td><%= bookmark.user.email %></td>
+        <td><%= link_to bookmark.title, bookmark.url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  
+<% end %>  
+  
+<% content_for :footer do %>
+	<p><%= link_to "manage your bookmarks", bookmarks_path %></p>
+<% end %>
